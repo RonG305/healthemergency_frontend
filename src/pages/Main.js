@@ -4,9 +4,13 @@ import Loader from "../components/Loader";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
+
 const Main = () => {
   const Sidebar = lazy(() => import("../components/Sidebar"));
   const Emergency = lazy(() => import("../components/Emergency/Emergency"))
+  const Dashboard = lazy(() => import("../components/Dashboard/Dashboard"))
+  const TeamDispatch = lazy(() => import("../components/TeamDispatch/TeamDispatch"))
+  const DispatchForm = lazy(() => import('../components/TeamDispatch/DispatchForm'))
 
   const [showSidebar, setShowSidebar] = useState(true)
 
@@ -27,6 +31,9 @@ const Main = () => {
         <div className=" pt-[70px]">
         <Routes>
             <Route path="/emergencies" Component={Emergency} />
+            <Route path="/dashboard" Component={Dashboard} />
+            <Route path="/team_dispatch" Component={TeamDispatch} />
+            <Route path="/dispatch_form" Component={DispatchForm} />
         </Routes>
         </div>
        

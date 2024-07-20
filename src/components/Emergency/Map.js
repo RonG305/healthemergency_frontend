@@ -1,10 +1,10 @@
-// components/Emergency/Map.js
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import "leaflet/dist/leaflet.css";
+import 'leaflet/dist/leaflet.css';
 
-// Fix for leaflet's default marker icon
+
+
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -13,34 +13,31 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-const Map = () => {
-  const emergencies = [
-    { lat: 37.7749, lng: -122.4194, title: 'Emergency 1', description: 'Fire in downtown' },
-    { lat: 34.0522, lng: -118.2437, title: 'Emergency 2', description: 'Car accident' },
-    { lat: 40.7128, lng: -74.0060, title: 'Emergency 3', description: 'Medical emergency' },
-    // Add more emergency locations as needed
-  ];
 
+
+
+const Map = ({ emergencies }) => {
   return (
-    <div className="w-2/3 rounded-lg border border-slate-200 h-[90vh] p-4 my-4">
-      <h3>Emergencies</h3>
-      <MapContainer center={[0, 0]} zoom={2} style={{ height: "100%", width: "100%" }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        {emergencies.map((emergency, index) => (
-          <Marker key={index} position={[emergency.lat, emergency.lng]}>
-            <Popup>
-              <div>
-                <h4>{emergency.title}</h4>
-                <p>{emergency.description}</p>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
-    </div>
+    <div className="w-2/3 rounded-lg border border-slate-200 h-[80vh] p-4 my-4">
+    <h3 className="text-center text-red-500 text-xl my-2">Emergencies</h3>
+    <MapContainer center={[0, 0]} zoom={2} style={{ height: "100%", width: "100%" }}>
+      <TileLayer
+      className=" w-full h-full"
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      />
+      {emergencies.map((emergency, index) => (
+        <Marker key={index} position={[emergency.latitude, emergency.longitude]}>
+          <Popup>
+            <div>
+              <h4>{emergency.emergency_type}</h4>
+              <p>{emergency.report_time}</p>
+            </div>
+          </Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+  </div>
   );
 };
 

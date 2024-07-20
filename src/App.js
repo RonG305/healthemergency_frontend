@@ -7,10 +7,12 @@ import Loader from './components/Loader';
 
 const Signup = lazy(() => import('./components/Signup'))
 const Signin = lazy(() => import('./components/Signin'))
-const Profile = lazy(() => import('./components/Profile'))
+const Profile = lazy(() => import('./components/Profile/Profile'))
 const EmergencyAlert = lazy(() => import('./components/EmergencyAlert'))
 const AudioRecorder = lazy(() => import('./components/AudioRecorder'))
 const Main = lazy(() => import('./pages/Main'))
+const ProfileView = lazy(() => import("./components/Profile/ProfileView"))
+const UpdateProfile = lazy(() => import('./components/Profile/UpdateProfile')) 
 
 
 
@@ -26,6 +28,8 @@ function App() {
         <Route path='/emergency_alert' Component={EmergencyAlert} />
         <Route path='/audio' Component={AudioRecorder} />
         <Route path='/main/*' Component={Main} />
+        <Route path='/profile_view/' Component={ProfileView} />
+        <Route path='/update_profile/:id' Component={UpdateProfile} />
       </Routes>
       </BrowserRouter>
       </Suspense>

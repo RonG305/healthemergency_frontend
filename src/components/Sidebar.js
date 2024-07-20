@@ -18,7 +18,7 @@ const Sidebar = ({showSidebar, handleShowSidebar}) => {
                 onClick={handleShowSidebar}
                 />
         </div>
-        <h3 className={sidebarStyles.sideLink}><HiOutlineViewGrid size={20} />Dashboard</h3>
+        <Link to={`/main/dashboard`} className={sidebarStyles.sideLink}><HiOutlineViewGrid size={20} />Dashboard</Link>
         <Link to={`/main/emergencies`} className={sidebarStyles.sideLink}><TbAlertTriangle className='text-red-500' size={20} />Emergencies</Link>
 
         
